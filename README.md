@@ -45,7 +45,7 @@ ContactosApi/
 │       └── ContactosApiIntegrationTests.cs
 │
 └── README.md
-
+```
 ## Requisitos
 
 - .NET 8 SDK o superior compatible con `net8.0`.
@@ -54,6 +54,7 @@ Para verificar la instalación:
 
 ```bash
 dotnet --version
+```
 
 ##Ejecución local
 
@@ -62,7 +63,7 @@ Clonar el repositorio:
 ```bash
 git clone https://github.com/K3th0r/contacto-api-backend.git
 cd contacto-api-backend
-
+```
 Restaurar dependencias:
 
 dotnet restore
@@ -71,7 +72,7 @@ Ejecutar la API:
 
 ```bash
 dotnet run --project src/ContactosApi/ContactosApi.csproj
-
+```
 La consola mostrará una URL similar a:
 
 http://localhost:XXXX
