@@ -66,8 +66,9 @@ cd contacto-api-backend
 ```
 Restaurar dependencias:
 
+```bash
 dotnet restore
-
+```
 Ejecutar la API:
 
 ```bash
