@@ -56,7 +56,7 @@ Para verificar la instalación:
 dotnet --version
 ```
 
-##Ejecución local
+## Ejecución local
 
 Clonar el repositorio:
 
