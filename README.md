@@ -1,6 +1,6 @@
 # API de Contactos
 
-API REST desarrollada en .NET 10 para gestionar contactos utilizando almacenamiento en memoria, sin base de datos.
+API REST desarrollada en .NET 8 para gestionar contactos utilizando almacenamiento en memoria, sin base de datos.
 
 ## Objetivo
 
@@ -16,9 +16,9 @@ La solución permite:
 
 ## Tecnologías utilizadas
 
-- .NET 10
+- .NET 8
 - ASP.NET Core Web API
-- Swagger / OpenAPI
+- Swagger
 - xUnit
 - FluentAssertions
 - Microsoft.AspNetCore.Mvc.Testing
@@ -45,3 +45,37 @@ ContactosApi/
 │       └── ContactosApiIntegrationTests.cs
 │
 └── README.md
+
+## Requisitos
+
+- .NET 8 SDK o superior compatible con `net8.0`.
+
+Para verificar la instalación:
+
+```bash
+dotnet --version
+
+##Ejecución local
+
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/K3th0r/contacto-api-backend.git
+cd contacto-api-backend
+
+Restaurar dependencias:
+
+dotnet restore
+
+Ejecutar la API:
+
+```bash
+dotnet run --project src/ContactosApi/ContactosApi.csproj
+
+La consola mostrará una URL similar a:
+
+http://localhost:XXXX
+
+Abrir Swagger en el navegador:
+
+http://localhost:XXXX/swagger
