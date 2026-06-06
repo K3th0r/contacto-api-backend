@@ -81,3 +81,58 @@ http://localhost:XXXX
 Abrir Swagger en el navegador:
 
 http://localhost:XXXX/swagger
+
+
+## Endpoints disponibles
+
+### Obtener todos los contactos
+
+```http
+GET /api/contactos
+```
+
+Usando curl
+
+```bash
+curl http://localhost:5189/api/contactos
+```
+
+Obtener contacto por ID
+
+```http
+GET /api/contactos/{id}
+```
+
+Ejemplo:
+
+```bash
+curl http://localhost:5189/api/contactos/1
+```
+
+Crear contacto
+
+```http
+POST /api/contactos
+```
+Body:
+
+{
+  "nombre": "Juan Perez",
+  "telefono": "123456789"
+}
+
+Ejemplo usando curl:
+```bash
+curl -X POST http://localhost:5189/api/contactos ^
+  -H "Content-Type: application/json" ^
+  -d "{\"nombre\":\"Juan Perez\",\"telefono\":\"123456789\"}"
+```
+## Instrucciones para tests
+
+Desde la raíz del repositorio:
+
+```bash
+dotnet test
+```
+
+La solución incluye pruebas unitarias y de integración.
