@@ -34,3 +34,7 @@ project.assets.json
 
 # Environment files
 .env
+
+#Agent
+src/.agents/
+src/openspec/

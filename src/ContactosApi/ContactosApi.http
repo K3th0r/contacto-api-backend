@@ -1,6 +1,21 @@
 @ContactosApi_HostAddress = http://localhost:5210
 
-GET {{ContactosApi_HostAddress}}/weatherforecast/
-Accept: application/json
+POST {{ContactosApi_HostAddress}}/api/contactos
+Content-Type: application/json
+
+{
+  "nombre": "Ana Pérez",
+  "telefono": "+56 9 1234 5678"
+}
+
+###
+
+PUT {{ContactosApi_HostAddress}}/api/contactos/1
+Content-Type: application/json
+
+{
+  "nombre": "Ana Pérez",
+  "telefono": "+56 9 9876 5432"
+}
 
 ###

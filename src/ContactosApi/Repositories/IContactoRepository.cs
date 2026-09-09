@@ -11,5 +11,6 @@ namespace ContactosApi.Repositories
         Contacto? GetById(int id);
         Contacto? GetByTelefono(string telefono);
         Contacto Add(string nombre, string telefono);
+        Contacto? Update(int id, string nombre, string telefono);
     }
 }

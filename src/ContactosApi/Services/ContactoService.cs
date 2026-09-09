@@ -74,6 +74,36 @@ namespace ContactosApi.Services
             }
         }
 
+        public Result<ContactoResponse> Actualizar(int id, ActualizarContactoRequest request)
+        {
+            if (string.IsNullOrWhiteSpace(request.Nombre))
+                return Result<ContactoResponse>.Validation("El nombre es obligatorio.");
+
+            if (string.IsNullOrWhiteSpace(request.Telefono))
+                return Result<ContactoResponse>.Validation("El teléfono es obligatorio.");
+
+            var nombre = request.Nombre.Trim();
+            var telefono = request.Telefono.Trim();
+
+            try
+            {
+                var contacto = _repository.Update(id, nombre, telefono);
+
+                if (contacto is null)
+                    return Result<ContactoResponse>.NotFound("Contacto no encontrado.");
+
+                _logger.LogInformation(
+                    "Contacto actualizado correctamente. ContactoId: {ContactoId}",
+                    contacto.Id);
+
+                return Result<ContactoResponse>.Success(ToResponse(contacto));
+            }
+            catch (InvalidOperationException)
+            {
+                return Result<ContactoResponse>.Conflict("Ya existe un contacto con el mismo teléfono.");
+            }
+        }
+
         private static ContactoResponse ToResponse(Contacto contacto)
         {
             //mapeo desde dominio a salida como DTO

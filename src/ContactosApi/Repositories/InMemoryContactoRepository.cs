@@ -50,5 +50,29 @@ namespace ContactosApi.Repositories
                 return contacto;
             }
         }
+
+        public Contacto? Update(int id, string nombre, string telefono)
+        {
+            lock (_writeLock)
+            {
+                if (!_contactos.TryGetValue(id, out var contacto))
+                    return null;
+
+                var existingContact = GetByTelefono(telefono);
+
+                if (existingContact is not null && existingContact.Id != id)
+                    throw new InvalidOperationException("Ya existe un contacto con el mismo teléfono.");
+
+                var updatedContact = contacto with
+                {
+                    Nombre = nombre,
+                    Telefono = telefono
+                };
+
+                _contactos[id] = updatedContact;
+
+                return updatedContact;
+            }
+        }
     }
 }

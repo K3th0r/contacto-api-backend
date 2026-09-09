@@ -68,5 +68,28 @@ namespace ContactosApi.Controllers
                 result.Value
             );
         }
+
+        [HttpPut("{id:int}")]
+        [ProducesResponseType(typeof(ContactoResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        public ActionResult<ContactoResponse> Actualizar(int id, ActualizarContactoRequest request)
+        {
+            var result = _contactoService.Actualizar(id, request);
+
+            if (!result.IsSuccess)
+            {
+                return result.ErrorType switch
+                {
+                    ErrorType.Validation => BadRequest(new { message = result.Error }),
+                    ErrorType.NotFound => NotFound(new { message = result.Error }),
+                    ErrorType.Conflict => Conflict(new { message = result.Error }),
+                    _ => BadRequest(new { message = result.Error })
+                };
+            }
+
+            return Ok(result.Value);
+        }
     }
 }
